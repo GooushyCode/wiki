@@ -4,5 +4,32 @@
     <select id="findAll" resultType="com.gooushy.wiki.domain.Ebook">
         select * from ebook;
     </select>
+    <insert id="insert" parameterType="com.gooushy.wiki.domain.Ebook">
+        insert into ebook(name,category1_id,category2_id,description,cover,doc_count,view_count,vote_count)
+            values(#{name},#{category1Id},#{category2Id},#{description},#{cover},#{docCount},#{viewCount},#{voteCount});
+    </insert>
+    <update id="updateEbook" parameterType="com.gooushy.wiki.domain.Ebook">
+        update ebook set name=#{name},
+                         category1_id=#{category1Id},
+                         category2_id = #{category2Id},
+                         description = #{description},
+                         cover = #{cover},
+                         doc_count = #{docCount},
+                         view_count = #{viewCount},
+                         vote_count = #{voteCount}
+        where id = #{id}
+    </update>
+    <delete id="deleteEbook" parameterType="java.lang.Long">
+        delete from ebook where id=#{12312}
+    </delete>
+    <select id="findById" parameterType="java.lang.Long" resultType="com.gooushy.wiki.domain.Ebook">
+        select * from ebook where id=#{hgdjhas}
+    </select>
+    <select id="findByName" parameterType="java.lang.String" resultType="com.gooushy.wiki.domain.Ebook">
+        select * from ebook where name like #{"name"}
+    </select>
+    <select id="findByEbookPojo" parameterType="com.gooushy.wiki.domain.EbookPojo" resultType="com.gooushy.wiki.domain.Ebook">
+        select * from ebook where name like #{ebook.name}
+    </select>
 
 </mapper>
